@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :articles do
-    resources :comments
+    resources :comments do
+      patch :update_buy, on: :member
+    end
   end
 
   root 'welcome#index'

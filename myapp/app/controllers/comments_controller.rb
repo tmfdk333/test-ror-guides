@@ -28,6 +28,19 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update_buy
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+
+    if @comment.buy
+      @comment.update_attribute(:buy, false)
+    else
+      @comment.update_attribute(:buy, true)
+    end
+    redirect_to article_path(@article)
+  end
+  # https://stackoverflow.com/questions/29619447/button-click-changes-boolean-to-true
+
   private
     def comment_params
       params.require(:comment).permit(:commetner, :body, :buy)

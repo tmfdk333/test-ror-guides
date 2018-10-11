@@ -17,6 +17,9 @@
     <strong>Commenter: </strong> <%= comment.commetner %>
     <strong>Comment: </strong> <%= comment.body %>
     <strong>Check: </strong> <%= comment.buy %>
+
+    <%= button_to (comment.buy ? "Turn False" : "Turn True"), update_buy_article_comment_path(@article, comment), class: 'btn btn-outline-dark',  method: :patch %>
+    <%= link_to (comment.buy ? "Turn False" : "Trun True"), update_buy_article_comment_path(@article, comment), method: :patch %>
     <%= link_to 'Edit', edit_article_comment_path(@article, comment) %>
     <%= link_to 'Destroy', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
